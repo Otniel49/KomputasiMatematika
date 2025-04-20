@@ -1,7 +1,7 @@
 clc
 clear
 
-%n = input ('nilai : ');
+n = input ('nilai : ');
 %if n > 70
 %    disp ('anda lulus');
 %end
