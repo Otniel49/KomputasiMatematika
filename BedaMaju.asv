@@ -1,0 +1,24 @@
+%Fungsi f(x) = 2x
+f = @(x) 2*x ;
+
+x = 1;
+% daftar nilai h
+h_values = 0.01 ;
+% h_values = [1e-1,1e-2,1e-3,1e-4];
+
+df_exact = 2;
+disp ('--- Perbandingan Turunan Numerik Untuk f(x) = 2x ---')
+% lopp untuk setiap nilai n
+
+for i =1:5
+    h= h values(i);
+    %metode beda Maju
+    df_forward = (f(x+h)-f(x))/h ;
+    
+    df_backward = (f(x)-f(x))/h ;
+    
+    df_central = (f(x+h)-f(x-h))/(2*h) ;
+    
+    disp (['h =', nums2str(h)])
+    disp (['Beda Maju :', nums2str(df_forward)])
+    disp (['B'])
