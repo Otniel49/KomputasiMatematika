@@ -1,4 +1,4 @@
-%Metode Jacobi
+%Metode Jacobi 
 function X = Tugas3_OtnielAnugrahNtoy_662022013(A,b,X0,N,tol)
 if nargin < 5, tol = 1e-6; end
 if nargin < 4, N = 1000; end
