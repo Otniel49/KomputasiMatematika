@@ -1,0 +1,77 @@
+% function X = Tugas3_OtnielAnugrahNtoy_662022013(A,b,X0,N,tol)
+% % jacobi Menyelesaikan SPL AX = b menggunakan iterasi Jacobi.
+% % Input:
+% %   A   = matriks koefisien
+% %   b   = vektor konstanta
+% %   X0  = tebakan awal
+% %   N   = jumlah iterasi maksimum
+% %   tol = toleransi galat
+% % Output:
+% %   X   = solusi iteratif
+% 
+% if nargin < 5, tol = 1e-6; end
+% if nargin < 4, N = 1000; end
+% if nargin < 3, X0 = zeros(size(b)); end
+% 
+% n = length(b);
+% X = X0;
+% X_old = X0;
+% P = zeros(n,n);
+% Q = zeros(n,1);
+% 
+% % Matriks P = inv(D)*(D - A), Q = inv(D)*b
+% for i = 1:n
+%     for j = 1:n
+%         if i ~= j
+%             P(i,j) = -A(i,j)/A(i,i);
+%         end
+%     end
+%     Q(i) = b(i)/A(i,i);
+% end
+% 
+% k = 1;
+% norma = Inf;
+% 
+% while k <= N && norma > tol
+%     X = Q + P * X_old;
+%     norma = max(abs(X - X_old));
+%     X_old = X;
+%     fprintf('Iterasi ke-%d: ', k);
+%     fprintf('%.4f ', X);
+%     fprintf('\n');
+%     k = k + 1;
+% end
+% end
+
+function X = Tugas3_OtnielAnugrahNtoy_662022013(A,b,X0,N,tol)
+% gauseid Menyelesaikan SPL AX = b menggunakan iterasi Gauss-Seidel.
+%
+% Input: A = matriks koefisien dari sistem
+% b = vektor kolom untuk nilai konstanta dari sistem
+% X0 = penyelesaian awal
+% N = maksimum iterasi
+% tol = toleransi keakuratan
+%
+% Output: X = penyelesian
+if nargin < 5, tol = 1e-6; end
+if nargin < 4, N = 1000; end
+if nargin < 3, X0 = zeros(size(b),1); end
+n = size(A,1);
+X = X0;
+k = 1; norma = 1;
+while k <= N && norma > tol
+    X(1) = (b(1)-A(1,2:n)*X(2:n))/A(1,1); % persamaan (4.4)
+    for i = 2:n-1
+        tmp = b(i,:)-A(i,1:i-1)*X(1:i-1)-A(i,i+1:n)*X(i+1:n);
+        X(i) = tmp/A(i,i); % persamaan (4.3)
+    end
+    X(n) = (b(n,:)-A(n,1:n-1)*X(1:n-1))/A(n,n); % persamaan (4.4)
+    norma = max(abs(X-X0));
+    X0 = X;
+    % Cetak hasil iterasi
+    fprintf('Iterasi ke-%d\t: ', k);
+    fprintf('%.6f\t', X);
+    fprintf('%.6f\n', norma);
+    
+    k = k + 1;
+end
