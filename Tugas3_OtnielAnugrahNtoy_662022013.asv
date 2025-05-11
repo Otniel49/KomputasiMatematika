@@ -36,9 +36,9 @@
 %     X = Q + P * X_old;
 %     norma = max(abs(X - X_old));
 %     X_old = X;
-%     fprintf('Iterasi ke-%d: ', k);
-%     fprintf('%.4f ', X);
-%     fprintf('\n');
+%     disp('Iterasi ke-%d: ', k);
+%     disp('%.4f ', X);
+%     disp('\n');
 %     k = k + 1;
 % end
 % end
@@ -69,9 +69,9 @@ while k <= N && norma > tol
     norma = max(abs(X-X0));
     X0 = X;
     % Cetak hasil iterasi
-    fprintf('Iterasi ke-%d\t: ', k);
-    fprintf('%.6f\t', X);
-    fprintf('%.6f\n', norma);
+    disp('Iterasi ke-%d\t: ', k);
+    disp('%.6f\t', X);
+    disp('%.6f\n', norma);
     
     k = k + 1;
 end
