@@ -1,14 +1,5 @@
+%Metode Jacobi
 function X = Tugas3_OtnielAnugrahNtoy_662022013(A,b,X0,N,tol)
-% jacobi Menyelesaikan SPL AX = b menggunakan iterasi Jacobi.
-% Input:
-%   A   = matriks koefisien
-%   b   = vektor konstanta
-%   X0  = tebakan awal
-%   N   = jumlah iterasi maksimum
-%   tol = toleransi galat
-% Output:
-%   X   = solusi iteratif
-
 if nargin < 5, tol = 1e-6; end
 if nargin < 4, N = 1000; end
 if nargin < 3, X0 = zeros(size(b)); end
@@ -43,16 +34,8 @@ while k <= N && norma > tol
 end
 end
 
+% Metode Gaus Sindel
 % function X = Tugas3_OtnielAnugrahNtoy_662022013(A,b,X0,N,tol)
-% % gauseid Menyelesaikan SPL AX = b menggunakan iterasi Gauss-Seidel.
-% %
-% % Input: A = matriks koefisien dari sistem
-% % b = vektor kolom untuk nilai konstanta dari sistem
-% % X0 = penyelesaian awal
-% % N = maksimum iterasi
-% % tol = toleransi keakuratan
-% %
-% % Output: X = penyelesian
 % if nargin < 5, tol = 1e-6; end
 % if nargin < 4, N = 1000; end
 % if nargin < 3, X0 = zeros(size(b),1); end
